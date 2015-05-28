@@ -1,6 +1,7 @@
 package com.example.echeverria.lbasededatos;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.echeverria.lbasededatos.modelos.AdminSQLiteOpenHelper;
 
 public class MainActivity extends ActionBarActivity {
     EditText id_a, nombre, apellidop, apellidom, email, telefono, edad;
@@ -26,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
         telefono = (EditText)findViewById(R.id.telefono);
         edad=(EditText)findViewById(R.id.edad);
     }
-
+    //Metodo que nos permite registrar datos en la base de datos.
     public void registrar (View v) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "contactos", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
@@ -78,7 +81,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
-
+    //metodo para realizar consultas a la base de datos.
     public void consulta(View v) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "contactos", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
@@ -107,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
             bd.close();
         }
     }
-
+    //Metodo para eliminar un registro de la base de datos.
     public void baja(View v) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "contactos", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
@@ -140,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
-
+    //Metodo para la modificacion de los registros almacenados.
     public void modificacion (View v) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "contactos", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
@@ -192,5 +195,10 @@ public class MainActivity extends ActionBarActivity {
         telefono.setText("");
         edad.setText("");
         id_a.requestFocus();
+    }
+    //Metodo buscar, el cual nos permite abrir otra actividad.
+    public void buscar (View v){
+        Intent a = new Intent(this, students.class);
+        startActivity(a);
     }
 }

@@ -145,6 +145,8 @@
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
+
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -159,8 +161,19 @@
             android:id="@+id/btn_limpiar"
             android:onClick="limpia"
             android:layout_weight="1"
+                android:layout_marginRight="5dp"
             android:background="#78909C"
             android:textColor="#FFFFFF" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/registro"
+                android:id="@+id/btn_consulta"
+                android:onClick="buscar"
+                android:layout_weight="1"
+                android:background="#78909C"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
